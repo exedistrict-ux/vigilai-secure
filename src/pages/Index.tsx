@@ -169,7 +169,7 @@ const Landing = () => {
       </section>
 
       {/* CTA */}
-      <section className="container py-20">
+      <section className="container py-20" data-tour="cta">
         <div className="relative rounded-2xl border border-border overflow-hidden p-12 md:p-16 text-center"
              style={{ background: "var(--gradient-hero)" }}>
           <div className="absolute inset-0 bg-grid opacity-20" />

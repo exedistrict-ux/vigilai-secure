@@ -58,7 +58,7 @@ const Dashboard = () => {
         <p className="text-muted-foreground mb-8">Submit any suspicious content. The 9-agent pipeline will run in real-time.</p>
 
         <div className="grid lg:grid-cols-5 gap-6">
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6" data-tour="dash-input">
             <div className="rounded-2xl border border-border bg-card p-6">
               <Tabs value={tab} onValueChange={setTab}>
                 <TabsList className="grid grid-cols-3 w-full mb-5">
@@ -85,7 +85,7 @@ const Dashboard = () => {
                 </TabsContent>
               </Tabs>
 
-              <Button variant="hero" size="lg" className="w-full mt-5" onClick={start} disabled={running}>
+              <Button data-tour="dash-analyze" variant="hero" size="lg" className="w-full mt-5" onClick={start} disabled={running}>
                 <Sparkles className="h-4 w-4" />
                 {running ? "Analyzing…" : "Run Analysis"}
               </Button>
@@ -109,7 +109,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3" data-tour="dash-pipeline">
             <div className="rounded-2xl border border-border bg-card p-6">
               <div className="flex items-center justify-between mb-5">
                 <div>
