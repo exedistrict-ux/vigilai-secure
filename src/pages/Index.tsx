@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
 import { ScreenshotsGallery } from "@/components/ScreenshotsGallery";
 import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
+import { WatchDemoButton } from "@/components/DemoTour";
 
 const detections = [
   { icon: ShieldAlert, title: "Scam Detection", desc: "Phishing, fraud & impersonation patterns" },
@@ -51,7 +52,7 @@ const Landing = () => {
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
         <div className="container relative py-24 md:py-32">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center" data-tour="hero">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card/50 backdrop-blur text-xs text-muted-foreground mb-8 animate-fade-in-up">
               <Sparkles className="h-3 w-3 text-accent" />
               Powered by 9 specialized AI agents
@@ -71,13 +72,14 @@ const Landing = () => {
               <Button asChild variant="hero" size="lg">
                 <Link to="/dashboard">Start Protecting Yourself <ArrowRight className="h-4 w-4" /></Link>
               </Button>
+              <WatchDemoButton />
               <Button asChild variant="outline" size="lg">
                 <Link to="/history">View Reports</Link>
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-20">
+          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-20" data-tour="stats">
             <Counter end={2847291} label="Threats Analyzed" />
             <Counter end={98} label="Detection Accuracy" suffix="%" />
             <Counter end={9} label="AI Agents Active" />
@@ -89,7 +91,7 @@ const Landing = () => {
       <DigitalArrestHighlight />
 
       {/* Detections */}
-      <section className="container py-20">
+      <section className="container py-20" data-tour="features">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Detection Suite</div>
           <h2 className="text-3xl md:text-4xl font-bold">8 Threat Categories. One Platform.</h2>
@@ -167,7 +169,7 @@ const Landing = () => {
       </section>
 
       {/* CTA */}
-      <section className="container py-20">
+      <section className="container py-20" data-tour="cta">
         <div className="relative rounded-2xl border border-border overflow-hidden p-12 md:p-16 text-center"
              style={{ background: "var(--gradient-hero)" }}>
           <div className="absolute inset-0 bg-grid opacity-20" />

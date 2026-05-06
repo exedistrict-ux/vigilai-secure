@@ -96,7 +96,7 @@ ${report.recommendations.map((r, i) => `${i+1}. ${r}`).join("\n")}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-8 flex items-center justify-center">
+          <div className="rounded-2xl border border-border bg-card p-8 flex items-center justify-center" data-tour="risk-meter">
             <RiskMeter score={report.riskScore} />
           </div>
         </div>

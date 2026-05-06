@@ -12,7 +12,7 @@ const Architecture = () => (
           How VigilAI orchestrates a multi-agent intelligence pipeline across Google Cloud and partner platforms.
         </p>
       </div>
-      <ArchitectureDiagram />
+      <div data-tour="arch"><ArchitectureDiagram /></div>
     </section>
   </div>
 );
