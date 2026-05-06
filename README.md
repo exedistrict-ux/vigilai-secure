@@ -1,10 +1,13 @@
 # VigilAI — Detect. Verify. Protect.
 
+![Hackathon](https://img.shields.io/badge/Google%20Cloud-Rapid%20Agent%20Hackathon-blue)
+![Partner](https://img.shields.io/badge/Partner-Arize%20AI-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Live-brightgreen)
+
 > The AI shield against modern cyber threats. VigilAI orchestrates a 9-agent intelligence pipeline to detect scams, deepfakes, fake news, digital arrest fraud, phishing, and social engineering attacks — in seconds.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB)](https://react.dev)
-[![Powered by Gemini](https://img.shields.io/badge/AI-Google%20Gemini-4285F4)](https://ai.google.dev)
+🔴 **LIVE DEMO:** https://vigilai-secure.lovable.app
 
 ## 🛡️ Overview
 
@@ -18,7 +21,37 @@ VigilAI is a production-grade cybersecurity SaaS platform that protects users fr
 - 🧠 Social engineering manipulation
 - 🌐 Malicious URLs & threat-intel correlation
 
-## 🤖 The 9-Agent Pipeline
+## 🚨 Digital Arrest Scam Detection
+
+VigilAI specifically targets India's fastest-growing cybercrime — **Digital Arrest Scams** where fraudsters impersonate CBI/ED/Police officers via video call and extort victims. Our Digital Arrest Scam Agent uses behavioral pattern recognition, voice stress analysis metadata, and authority impersonation detection to identify these threats in real-time.
+
+> **1 in 3 Indians have received a digital arrest call.** VigilAI flags them before money changes hands.
+
+## 🏗️ Architecture
+
+### Agent Flow
+
+```text
+                   ┌──────────────────────┐
+  User Input  ───▶ │  Orchestrator Agent  │ ──┐
+ (text/URL/file)   └──────────────────────┘   │
+                                              ▼
+       ┌────────────────────────────────────────────────────┐
+       │           8 Specialized Agents (parallel)          │
+       │  Scam · Fake News · Digital Arrest · Deepfake      │
+       │  Social Eng · Threat Intel · Guidance · Report     │
+       └────────────────────────────────────────────────────┘
+                                              │
+                                              ▼
+                              ┌──────────────────────────┐
+                              │  Evidence & Report Agent │
+                              └──────────────────────────┘
+                                              │
+                                              ▼
+                                      Download Report
+```
+
+### The 9-Agent Pipeline
 
 | # | Agent | Role |
 |---|---|---|
@@ -32,6 +65,22 @@ VigilAI is a production-grade cybersecurity SaaS platform that protects users fr
 | 8 | User Guidance Agent | Generates actionable safety recommendations |
 | 9 | Evidence & Report Agent | Compiles the forensic report |
 
+### Google Cloud Services
+
+- **Gemini API** — Multimodal LLM powering each agent's reasoning
+- **Vertex AI Agent Builder** — Hosts and orchestrates the agent graph
+- **Cloud Firestore** — Stores reports, history, and audit trail
+- **Cloud Storage** — Holds uploaded media (audio/video/images/PDFs)
+- **Cloud Run** — Serverless host for the FastAPI backend
+- **BigQuery** — Long-term analytics and threat trend warehousing
+- **Cloud Logging** — Observability for the agent pipeline
+
+### Partner Integrations
+
+- **Arize AI** — End-to-end AI observability, drift monitoring, and per-agent evaluation of Gemini outputs
+- **Elastic** — Security analytics, full-text threat search, and SIEM-style dashboards over historical reports
+- **Fivetran** — Managed data pipelines feeding threat-intel feeds and partner data into BigQuery
+
 ## 🧰 Tech Stack
 
 - **Frontend:** React 18 + Vite + TypeScript + Tailwind CSS + shadcn/ui
@@ -40,48 +89,29 @@ VigilAI is a production-grade cybersecurity SaaS platform that protects users fr
 - **Database:** Firebase Firestore
 - **Routing:** React Router v6
 - **State / Data:** TanStack Query
-- **Deployment:** Vercel (frontend) · Railway (backend)
+- **Deployment:** Vercel (frontend) · Railway / Cloud Run (backend)
 
-## 🤝 Partner Integrations
+## 📸 Screenshots
 
-- **Arize AI** — AI observability and model monitoring
-- **Elastic** — Security analytics and threat search
-- **Fivetran** — Data pipeline and ingestion
-- **Google Cloud** — Infrastructure, Gemini API, Firestore, Cloud Run
+> See live demo at **https://vigilai-secure.lovable.app**
 
-### Google Cloud services used
-- **Vertex AI / Gemini API** — multi-agent reasoning
-- **Cloud Firestore** — report storage
-- **Cloud Storage** — file uploads (audio/video/images)
-- **Cloud Run** — backend hosting
-- **Cloud Logging** — observability
-
-## 🚀 Live Demo
-
-🔗 **[Launch VigilAI](https://df706d53-de49-49aa-988d-174ceaccf50e.lovable.app)** *(replace with your published URL)*
+- **[Screenshot 1 — Homepage Hero]** Dark cybersecurity hero with animated counters and CTA
+- **[Screenshot 2 — Dashboard]** 9-agent pipeline visualizing parallel analysis in real-time
+- **[Screenshot 3 — Result]** Circular risk meter (0–100) with per-agent findings breakdown
+- **[Screenshot 4 — Upload]** Tabbed text / URL / file upload workflow
 
 ## 💻 Run Locally
 
-### Prerequisites
-- Node.js 18+ and npm (or [Bun](https://bun.sh))
-
-### Frontend
-
 ```bash
-# 1. Clone the repository
 git clone https://github.com/<your-username>/VigilAI.git
 cd VigilAI
-
-# 2. Install dependencies
 npm install
-
-# 3. Start the dev server
 npm run dev
 ```
 
-The app will be available at `http://localhost:8080`.
+App runs at `http://localhost:8080`.
 
-### Backend (optional, when wired up)
+### Backend (optional)
 
 ```bash
 cd backend
@@ -90,7 +120,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-Set the following environment variables:
+Required env vars:
 
 ```bash
 GEMINI_API_KEY=your_google_gemini_key
@@ -103,9 +133,9 @@ FIREBASE_CREDENTIALS=path_to_service_account.json
 ```
 VigilAI/
 ├── src/
-│   ├── components/      # Shared UI (Navbar, Logo, AgentPipeline, RiskMeter)
+│   ├── components/      # Navbar, Logo, AgentPipeline, RiskMeter, ArchitectureDiagram
 │   ├── components/ui/   # shadcn/ui primitives
-│   ├── pages/           # Index, Dashboard, Result, History
+│   ├── pages/           # Index, Dashboard, Result, History, Architecture
 │   ├── lib/             # agents, storage, utils
 │   └── index.css        # Design system tokens
 ├── backend/             # FastAPI service (planned)
@@ -134,3 +164,5 @@ Dark cybersecurity aesthetic with blue (`#3B82F6`) and cyan (`#06B6D4`) accents 
 ---
 
 **VigilAI** · Detect. Verify. Protect.
+Built for **Google Cloud Rapid Agent Hackathon 2026** · Powered by Gemini + Vertex AI
+Partners: **Arize AI · Elastic · Fivetran**
