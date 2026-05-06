@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
 
@@ -15,7 +15,7 @@ export const Navbar = () => {
           <NavLink to="/history" className={({isActive}) => isActive ? active : link}>History</NavLink>
         </nav>
         <Button asChild variant="hero" size="sm">
-          <NavLink to="/dashboard">Launch App</NavLink>
+          <Link to="/dashboard">Launch App</Link>
         </Button>
       </div>
     </header>
