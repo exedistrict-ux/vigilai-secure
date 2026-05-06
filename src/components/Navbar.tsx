@@ -13,6 +13,7 @@ export const Navbar = () => {
           <NavLink to="/" end className={({isActive}) => isActive ? active : link}>Home</NavLink>
           <NavLink to="/dashboard" className={({isActive}) => isActive ? active : link}>Dashboard</NavLink>
           <NavLink to="/history" className={({isActive}) => isActive ? active : link}>History</NavLink>
+          <NavLink to="/architecture" className={({isActive}) => isActive ? active : link}>Architecture</NavLink>
         </nav>
         <Button asChild variant="hero" size="sm">
           <Link to="/dashboard">Launch App</Link>
