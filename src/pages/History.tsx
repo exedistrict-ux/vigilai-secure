@@ -64,15 +64,19 @@ const History = () => {
               <tbody>
                 {filtered.map(r => {
                   const high = r.riskScore >= 70, mid = r.riskScore >= 40;
-                  const color = high ? "destructive" : mid ? "warning" : "success";
+                  const badge = high
+                    ? "border-destructive/40 bg-destructive/10 text-destructive"
+                    : mid
+                      ? "border-warning/40 bg-warning/10 text-warning"
+                      : "border-success/40 bg-success/10 text-success";
+                  const dot = high ? "bg-destructive" : mid ? "bg-warning" : "bg-success";
                   return (
                     <tr key={r.id} className="border-t border-border hover:bg-secondary/30 transition-colors">
                       <td className="p-4 text-sm text-muted-foreground whitespace-nowrap">{new Date(r.createdAt).toLocaleString()}</td>
                       <td className="p-4 text-sm font-medium">{r.category}</td>
                       <td className="p-4">
-                        <div className={cn("inline-flex items-center gap-2 px-2.5 py-1 rounded-md border text-xs font-semibold",
-                          `border-${color}/40 bg-${color}/10 text-${color}`)}>
-                          <span className={`h-1.5 w-1.5 rounded-full bg-${color}`} />
+                        <div className={cn("inline-flex items-center gap-2 px-2.5 py-1 rounded-md border text-xs font-semibold", badge)}>
+                          <span className={cn("h-1.5 w-1.5 rounded-full", dot)} />
                           {r.riskScore}
                         </div>
                       </td>
