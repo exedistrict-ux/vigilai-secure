@@ -4,6 +4,9 @@ import { AGENTS } from "@/lib/agents";
 import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
+import { ScreenshotsGallery } from "@/components/ScreenshotsGallery";
+import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
 
 const detections = [
   { icon: ShieldAlert, title: "Scam Detection", desc: "Phishing, fraud & impersonation patterns" },
@@ -82,6 +85,9 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Digital Arrest Highlight */}
+      <DigitalArrestHighlight />
+
       {/* Detections */}
       <section className="container py-20">
         <div className="text-center max-w-2xl mx-auto mb-14">
@@ -135,6 +141,19 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Screenshots */}
+      <ScreenshotsGallery />
+
+      {/* Architecture Diagram */}
+      <section className="container py-20">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">System Design</div>
+          <h2 className="text-3xl md:text-4xl font-bold">How VigilAI Works</h2>
+          <p className="text-muted-foreground mt-4">Three views into the multi-agent intelligence pipeline.</p>
+        </div>
+        <ArchitectureDiagram />
+      </section>
+
       {/* Partners */}
       <section className="container py-16 border-t border-border">
         <div className="text-xs uppercase tracking-widest text-muted-foreground text-center mb-8">Powered by industry leaders</div>
@@ -163,9 +182,18 @@ const Landing = () => {
         </div>
       </section>
 
-      <footer className="border-t border-border py-8">
-        <div className="container text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} VigilAI · Detect. Verify. Protect.
+      <footer className="border-t border-border py-10">
+        <div className="container space-y-4 text-center text-sm text-muted-foreground">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-destructive/40 bg-destructive/10 text-destructive text-xs font-semibold">
+            <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+            LIVE DEMO: vigilai-secure.lovable.app
+          </div>
+          <div className="text-xs">
+            Built for <span className="text-foreground font-medium">Google Cloud Rapid Agent Hackathon 2026</span> ·
+            Powered by <span className="text-foreground font-medium">Gemini + Vertex AI</span> ·
+            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran</span>
+          </div>
+          <div>© {new Date().getFullYear()} VigilAI · Detect. Verify. Protect.</div>
         </div>
       </footer>
     </div>
