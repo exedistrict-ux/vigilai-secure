@@ -91,7 +91,7 @@ const Landing = () => {
       <DigitalArrestHighlight />
 
       {/* Detections */}
-      <section className="container py-20">
+      <section className="container py-20" data-tour="features">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Detection Suite</div>
           <h2 className="text-3xl md:text-4xl font-bold">8 Threat Categories. One Platform.</h2>
