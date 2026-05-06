@@ -4,6 +4,9 @@ import { AGENTS } from "@/lib/agents";
 import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
+import { ScreenshotsGallery } from "@/components/ScreenshotsGallery";
+import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
 
 const detections = [
   { icon: ShieldAlert, title: "Scam Detection", desc: "Phishing, fraud & impersonation patterns" },
