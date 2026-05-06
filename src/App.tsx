@@ -9,6 +9,7 @@ import Result from "./pages/Result.tsx";
 import History from "./pages/History.tsx";
 import Architecture from "./pages/Architecture.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { DemoTourProvider } from "./components/DemoTour.tsx";
 
 const queryClient = new QueryClient();
 
@@ -18,14 +19,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/result" element={<Result />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/architecture" element={<Architecture />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <DemoTourProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/result" element={<Result />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/architecture" element={<Architecture />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </DemoTourProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
