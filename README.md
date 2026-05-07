@@ -167,4 +167,4 @@ Dark cybersecurity aesthetic with blue (`#3B82F6`) and cyan (`#06B6D4`) accents 
 
 **VigilAI** · Detect. Verify. Protect.
 Built for **Google Cloud Rapid Agent Hackathon 2026** · Powered by Gemini + Vertex AI
-Partners: **Arize AI · Elastic · Fivetran**
+Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB**
