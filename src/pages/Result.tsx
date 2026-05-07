@@ -2,10 +2,11 @@ import { Navbar } from "@/components/Navbar";
 import { RiskMeter } from "@/components/RiskMeter";
 import { Button } from "@/components/ui/button";
 import { AGENTS } from "@/lib/agents";
-import { getReport } from "@/lib/storage";
+import { getReport, type Report } from "@/lib/storage";
 import { Link, useSearchParams } from "react-router-dom";
 import { AlertTriangle, ArrowLeft, Check, Download, Lightbulb, ShieldAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 const statusStyle = {
   clear: "text-success border-success/30 bg-success/10",
@@ -16,7 +17,15 @@ const statusStyle = {
 const Result = () => {
   const [params] = useSearchParams();
   const id = params.get("id") || "";
-  const report = getReport(id);
+  const [report, setReport] = useState<Report | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    getReport(id).then(r => { if (active) { setReport(r); setLoading(false); } });
+    return () => { active = false; };
+  }, [id]);
 
   const downloadReport = () => {
     if (!report) return;
