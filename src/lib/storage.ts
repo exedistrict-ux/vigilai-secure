@@ -1,3 +1,5 @@
+import { supabase } from "@/integrations/supabase/client";
+
 export type ThreatCategory = "Scam" | "Deepfake" | "Fake News" | "Digital Arrest" | "Social Engineering" | "Phishing" | "Safe";
 
 export type AgentFinding = {
@@ -19,19 +21,68 @@ export type Report = {
   recommendations: string[];
 };
 
-const KEY = "vigilai_reports_v1";
-
-export const getReports = (): Report[] => {
-  try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { return []; }
+type Row = {
+  id: string;
+  created_at: string;
+  input_type: string;
+  input_content: string;
+  threat_category: string;
+  risk_score: number;
+  summary: string;
+  findings: unknown;
+  recommendations: unknown;
 };
 
-export const saveReport = (r: Report) => {
-  const all = getReports();
-  all.unshift(r);
-  localStorage.setItem(KEY, JSON.stringify(all.slice(0, 100)));
+const rowToReport = (r: Row): Report => ({
+  id: r.id,
+  createdAt: new Date(r.created_at).getTime(),
+  inputType: r.input_type as Report["inputType"],
+  inputPreview: r.input_content,
+  category: r.threat_category as ThreatCategory,
+  riskScore: r.risk_score,
+  summary: r.summary,
+  findings: (r.findings as AgentFinding[]) || [],
+  recommendations: (r.recommendations as string[]) || [],
+});
+
+export const getReports = async (): Promise<Report[]> => {
+  const { data, error } = await supabase
+    .from("threat_analyses")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(100);
+  if (error) { console.error(error); return []; }
+  return (data as Row[]).map(rowToReport);
 };
 
-export const getReport = (id: string) => getReports().find(r => r.id === id);
+export const getReport = async (id: string): Promise<Report | null> => {
+  if (!id) return null;
+  const { data, error } = await supabase
+    .from("threat_analyses")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+  if (error || !data) return null;
+  return rowToReport(data as Row);
+};
+
+export const saveReport = async (r: Report): Promise<Report> => {
+  const { data, error } = await supabase
+    .from("threat_analyses")
+    .insert({
+      input_type: r.inputType,
+      input_content: r.inputPreview,
+      threat_category: r.category,
+      risk_score: r.riskScore,
+      summary: r.summary,
+      findings: r.findings as never,
+      recommendations: r.recommendations as never,
+    })
+    .select()
+    .single();
+  if (error || !data) { console.error(error); return r; }
+  return rowToReport(data as Row);
+};
 
 // Mock analysis — replace with real Gemini call via edge function later
 export const runMockAnalysis = (inputType: Report["inputType"], input: string): Report => {

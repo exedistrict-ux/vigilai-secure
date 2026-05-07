@@ -2,16 +2,18 @@ import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getReports, ThreatCategory } from "@/lib/storage";
+import { getReports, type Report, type ThreatCategory } from "@/lib/storage";
 import { ArrowRight, History as HistoryIcon, Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const History = () => {
-  const reports = getReports();
+  const [reports, setReports] = useState<Report[]>([]);
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<string>("all");
+
+  useEffect(() => { getReports().then(setReports); }, []);
 
   const filtered = useMemo(() => reports.filter(r =>
     (filter === "all" || r.category === filter) &&

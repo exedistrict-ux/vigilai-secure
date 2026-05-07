@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      threat_analyses: {
+        Row: {
+          created_at: string
+          findings: Json
+          id: string
+          input_content: string
+          input_type: string
+          recommendations: Json
+          risk_score: number
+          summary: string
+          threat_category: string
+        }
+        Insert: {
+          created_at?: string
+          findings?: Json
+          id?: string
+          input_content: string
+          input_type: string
+          recommendations?: Json
+          risk_score: number
+          summary: string
+          threat_category: string
+        }
+        Update: {
+          created_at?: string
+          findings?: Json
+          id?: string
+          input_content?: string
+          input_type?: string
+          recommendations?: Json
+          risk_score?: number
+          summary?: string
+          threat_category?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -91,10 +91,9 @@ export const DemoTourProvider = ({ children }: { children: ReactNode }) => {
   const seedReport = useCallback(async () => {
     const { runMockAnalysis, saveReport } = await import("@/lib/storage");
     const report = runMockAnalysis("text", "You have won ₹50,000! Click here to claim your prize now.");
-    report.id = "demo-tour-report";
     report.riskScore = 94;
-    saveReport(report);
-    return report.id;
+    const saved = await saveReport(report);
+    return saved.id;
   }, []);
 
   // Run a stop: navigate, wait for element, position highlight, run cursor actions, schedule next
