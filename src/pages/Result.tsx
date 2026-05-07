@@ -64,6 +64,15 @@ ${report.recommendations.map((r, i) => `${i+1}. ${r}`).join("\n")}
     a.click();
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="container py-20 text-center text-muted-foreground">Loading report…</div>
+      </div>
+    );
+  }
+
   if (!report) {
     return (
       <div className="min-h-screen bg-background">
