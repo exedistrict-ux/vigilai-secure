@@ -20,7 +20,13 @@ const detections = [
   { icon: Activity, title: "Real-time Reports", desc: "Forensic evidence compilation" },
 ];
 
-const partners = ["Arize AI", "Elastic", "Fivetran", "Google Cloud"];
+const partners = [
+  { name: "Arize AI", desc: "AI Observability & Hallucination Detection", icon: Eye, color: "#9333ea" },
+  { name: "Elastic", desc: "Real-time Security Analytics", icon: BarChart3, color: "#00bfb3" },
+  { name: "Fivetran", desc: "Automated Data Pipelines", icon: Workflow, color: "#0073ff" },
+  { name: "GitLab", desc: "CI/CD Pipeline & Version Control", icon: GitBranch, color: "#fc6d26" },
+  { name: "MongoDB", desc: "Threat Intelligence Database", icon: Database, color: "#00ed64" },
+];
 
 const Counter = ({ end, label, suffix = "" }: { end: number; label: string; suffix?: string }) => {
   const [n, setN] = useState(0);
