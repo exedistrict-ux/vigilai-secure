@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { AGENTS } from "@/lib/agents";
-import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity } from "lucide-react";
+import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity, Eye, BarChart3, Workflow, GitBranch, Database, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
@@ -20,7 +20,13 @@ const detections = [
   { icon: Activity, title: "Real-time Reports", desc: "Forensic evidence compilation" },
 ];
 
-const partners = ["Arize AI", "Elastic", "Fivetran", "Google Cloud"];
+const partners = [
+  { name: "Arize AI", desc: "AI Observability & Hallucination Detection", icon: Eye, color: "#9333ea" },
+  { name: "Elastic", desc: "Real-time Security Analytics", icon: BarChart3, color: "#00bfb3" },
+  { name: "Fivetran", desc: "Automated Data Pipelines", icon: Workflow, color: "#0073ff" },
+  { name: "GitLab", desc: "CI/CD Pipeline & Version Control", icon: GitBranch, color: "#fc6d26" },
+  { name: "MongoDB", desc: "Threat Intelligence Database", icon: Database, color: "#00ed64" },
+];
 
 const Counter = ({ end, label, suffix = "" }: { end: number; label: string; suffix?: string }) => {
   const [n, setN] = useState(0);
@@ -158,13 +164,29 @@ const Landing = () => {
 
       {/* Partners */}
       <section className="container py-16 border-t border-border">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground text-center mb-8">Powered by industry leaders</div>
-        <div className="flex flex-wrap justify-center gap-3">
-          {partners.map(p => (
-            <div key={p} className="px-5 py-2.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:border-accent/40 hover:text-foreground transition-colors">
-              {p}
-            </div>
-          ))}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Integrations</div>
+          <h2 className="text-3xl md:text-4xl font-bold">5 Partners. Fully Integrated.</h2>
+          <p className="text-muted-foreground mt-3">Industry leaders powering VigilAI's intelligence stack.</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          {partners.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div key={p.name} className="rounded-xl border border-border bg-card p-5 hover:border-accent/40 transition-colors">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="inline-flex p-2.5 rounded-lg" style={{ backgroundColor: `${p.color}1a`, color: p.color }}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-success/10 text-success border border-success/30">
+                    <CheckCircle2 className="h-3 w-3" /> Integrated
+                  </span>
+                </div>
+                <div className="font-semibold" style={{ color: p.color }}>{p.name}</div>
+                <div className="text-sm text-muted-foreground mt-1">{p.desc}</div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -193,7 +215,7 @@ const Landing = () => {
           <div className="text-xs">
             Built for <span className="text-foreground font-medium">Google Cloud Rapid Agent Hackathon 2026</span> ·
             Powered by <span className="text-foreground font-medium">Gemini + Vertex AI</span> ·
-            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran</span>
+            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran · GitLab · MongoDB</span>
           </div>
           <div>© {new Date().getFullYear()} VigilAI · Detect. Verify. Protect.</div>
         </div>

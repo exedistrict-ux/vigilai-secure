@@ -1,7 +1,9 @@
 # VigilAI — Detect. Verify. Protect.
 
 ![Hackathon](https://img.shields.io/badge/Google%20Cloud-Rapid%20Agent%20Hackathon-blue)
-![Partner](https://img.shields.io/badge/Partner-Arize%20AI-purple)
+![Partners](https://img.shields.io/badge/Partners-5%20Integrated-blue)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
+![GitLab CI](https://img.shields.io/badge/CI%2FCD-GitLab-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Live-brightgreen)
 
@@ -165,4 +167,4 @@ Dark cybersecurity aesthetic with blue (`#3B82F6`) and cyan (`#06B6D4`) accents 
 
 **VigilAI** · Detect. Verify. Protect.
 Built for **Google Cloud Rapid Agent Hackathon 2026** · Powered by Gemini + Vertex AI
-Partners: **Arize AI · Elastic · Fivetran**
+Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB**
