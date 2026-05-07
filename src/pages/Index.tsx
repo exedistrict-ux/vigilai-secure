@@ -215,7 +215,7 @@ const Landing = () => {
           <div className="text-xs">
             Built for <span className="text-foreground font-medium">Google Cloud Rapid Agent Hackathon 2026</span> ·
             Powered by <span className="text-foreground font-medium">Gemini + Vertex AI</span> ·
-            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran</span>
+            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran · GitLab · MongoDB</span>
           </div>
           <div>© {new Date().getFullYear()} VigilAI · Detect. Verify. Protect.</div>
         </div>
