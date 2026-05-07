@@ -40,11 +40,11 @@ const Dashboard = () => {
     }
 
     const report = runMockAnalysis(type, input);
-    saveReport(report);
+    const saved = await saveReport(report);
     setRunning(false);
     setActiveIdx(-1);
     toast.success("Analysis complete");
-    navigate(`/result?id=${report.id}`);
+    navigate(`/result?id=${saved.id}`);
   };
 
   return (
