@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { AGENTS } from "@/lib/agents";
-import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity } from "lucide-react";
+import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity, Eye, BarChart3, Workflow, GitBranch, Database, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
