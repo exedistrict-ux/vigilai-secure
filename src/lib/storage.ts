@@ -90,13 +90,17 @@ export const runMockAnalysis = (inputType: Report["inputType"], input: string): 
   let category: ThreatCategory = "Safe";
   let risk = 10;
 
+  const suspiciousUrl = inputType === "url" && /\.(xyz|tk|ml|ga|cf|top|click)(\/|$)|bit\.ly|tinyurl|free-|winner|claim-now/.test(lower);
+
   if (/police|arrest|cbi|warrant|court|custody/.test(lower)) { category = "Digital Arrest"; risk = 92; }
   else if (/deepfake|ai.generated|synthetic|cloned voice/.test(lower)) { category = "Deepfake"; risk = 84; }
-  else if (/lottery|winner|prize|claim.*reward|otp|urgent.*pay/.test(lower)) { category = "Scam"; risk = 88; }
+  else if (/lottery|winner|prize|claim.*reward|otp|urgent.*pay|sbi|bank.*block|account.*block/.test(lower)) { category = "Scam"; risk = 88; }
+  else if (suspiciousUrl) { category = "Phishing"; risk = 65; }
   else if (/click here|verify.*account|suspended|bank.*confirm/.test(lower)) { category = "Phishing"; risk = 79; }
   else if (/breaking|shocking|they don.t want you|cure|miracle/.test(lower)) { category = "Fake News"; risk = 71; }
   else if (/trust me|secret|don.t tell|act now|limited time/.test(lower)) { category = "Social Engineering"; risk = 64; }
-  else { risk = Math.floor(Math.random() * 25) + 5; }
+  else { risk = Math.floor(Math.random() * 20) + 5; }
+
 
   const findings: AgentFinding[] = [
     { agentId: "orchestrator", status: "clear", confidence: 99, notes: "Pipeline executed across 8 specialist agents." },
