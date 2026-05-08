@@ -65,7 +65,7 @@ const History = () => {
               </thead>
               <tbody>
                 {filtered.map(r => {
-                  const high = r.riskScore >= 70, mid = r.riskScore >= 40;
+                  const high = r.riskScore >= 61, mid = r.riskScore >= 31;
                   const badge = high
                     ? "border-destructive/40 bg-destructive/10 text-destructive"
                     : mid
