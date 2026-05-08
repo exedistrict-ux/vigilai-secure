@@ -20,9 +20,9 @@ export const RiskMeter = ({ score }: { score: number }) => {
     requestAnimationFrame(step);
   }, [score]);
 
-  const key = score >= 70 ? "destructive" : score >= 40 ? "warning" : "success";
+  const key = score >= 61 ? "destructive" : score >= 31 ? "warning" : "success";
   const v = VARIANTS[key];
-  const label = score >= 70 ? "HIGH RISK" : score >= 40 ? "MODERATE" : "LOW RISK";
+  const label = score >= 61 ? "HIGH RISK" : score >= 31 ? "MODERATE" : "LOW RISK";
 
   return (
     <div className="flex flex-col items-center gap-3">
