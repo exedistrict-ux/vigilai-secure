@@ -93,7 +93,10 @@ const History = () => {
                         </div>
                       </td>
                       <td className="p-4 text-sm text-muted-foreground max-w-md truncate hidden md:table-cell">{r.inputPreview}</td>
-                      <td className="p-4 text-right">
+                      <td className="p-4 text-right whitespace-nowrap">
+                        <Button size="sm" variant="ghost" onClick={() => downloadReport(r)} title="Download report">
+                          <Download className="h-3 w-3" />
+                        </Button>
                         <Button asChild size="sm" variant="ghost">
                           <Link to={`/result?id=${r.id}`}>View <ArrowRight className="h-3 w-3" /></Link>
                         </Button>
