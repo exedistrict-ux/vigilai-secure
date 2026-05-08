@@ -16,6 +16,15 @@ const History = () => {
 
   useEffect(() => { getReports().then(setReports); }, []);
 
+  const downloadReport = (r: Report) => {
+    const txt = `VIGILAI THREAT ANALYSIS REPORT\n================================\nReport ID: ${r.id}\nGenerated: ${new Date(r.createdAt).toLocaleString()}\n\nCategory: ${r.category}\nRisk Score: ${r.riskScore}/100\n\nINPUT\n-----\n${r.inputPreview}\n\nSUMMARY\n-------\n${r.summary}\n\nAGENT FINDINGS\n--------------\n${r.findings.map(f => { const a = AGENTS.find(x => x.id === f.agentId); return `[${f.status.toUpperCase()}] ${a?.name} (${f.confidence}%)\n  ${f.notes}`; }).join("\n\n")}\n\nRECOMMENDATIONS\n---------------\n${r.recommendations.map((x, i) => `${i+1}. ${x}`).join("\n")}\n\n— VigilAI · Detect. Verify. Protect.`;
+    const blob = new Blob([txt], { type: "text/plain" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `vigilai-report-${r.id.slice(0,8)}.txt`;
+    a.click();
+  };
+
   const filtered = useMemo(() => reports.filter(r =>
     (filter === "all" || r.category === filter) &&
     (q === "" || r.inputPreview.toLowerCase().includes(q.toLowerCase()))
