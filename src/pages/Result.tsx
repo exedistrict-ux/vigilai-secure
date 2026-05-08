@@ -85,7 +85,7 @@ ${report.recommendations.map((r, i) => `${i+1}. ${r}`).join("\n")}
     );
   }
 
-  const high = report.riskScore >= 70;
+  const high = report.riskScore >= 61;
 
   return (
     <div className="min-h-screen bg-background">

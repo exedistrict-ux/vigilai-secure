@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getReports, type Report, type ThreatCategory } from "@/lib/storage";
-import { ArrowRight, History as HistoryIcon, Search } from "lucide-react";
+import { ArrowRight, Download, History as HistoryIcon, Search } from "lucide-react";
+import { AGENTS } from "@/lib/agents";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,15 @@ const History = () => {
   const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => { getReports().then(setReports); }, []);
+
+  const downloadReport = (r: Report) => {
+    const txt = `VIGILAI THREAT ANALYSIS REPORT\n================================\nReport ID: ${r.id}\nGenerated: ${new Date(r.createdAt).toLocaleString()}\n\nCategory: ${r.category}\nRisk Score: ${r.riskScore}/100\n\nINPUT\n-----\n${r.inputPreview}\n\nSUMMARY\n-------\n${r.summary}\n\nAGENT FINDINGS\n--------------\n${r.findings.map(f => { const a = AGENTS.find(x => x.id === f.agentId); return `[${f.status.toUpperCase()}] ${a?.name} (${f.confidence}%)\n  ${f.notes}`; }).join("\n\n")}\n\nRECOMMENDATIONS\n---------------\n${r.recommendations.map((x, i) => `${i+1}. ${x}`).join("\n")}\n\n— VigilAI · Detect. Verify. Protect.`;
+    const blob = new Blob([txt], { type: "text/plain" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `vigilai-report-${r.id.slice(0,8)}.txt`;
+    a.click();
+  };
 
   const filtered = useMemo(() => reports.filter(r =>
     (filter === "all" || r.category === filter) &&
@@ -65,7 +75,7 @@ const History = () => {
               </thead>
               <tbody>
                 {filtered.map(r => {
-                  const high = r.riskScore >= 70, mid = r.riskScore >= 40;
+                  const high = r.riskScore >= 61, mid = r.riskScore >= 31;
                   const badge = high
                     ? "border-destructive/40 bg-destructive/10 text-destructive"
                     : mid
@@ -83,7 +93,10 @@ const History = () => {
                         </div>
                       </td>
                       <td className="p-4 text-sm text-muted-foreground max-w-md truncate hidden md:table-cell">{r.inputPreview}</td>
-                      <td className="p-4 text-right">
+                      <td className="p-4 text-right whitespace-nowrap">
+                        <Button size="sm" variant="ghost" onClick={() => downloadReport(r)} title="Download report">
+                          <Download className="h-3 w-3" />
+                        </Button>
                         <Button asChild size="sm" variant="ghost">
                           <Link to={`/result?id=${r.id}`}>View <ArrowRight className="h-3 w-3" /></Link>
                         </Button>
