@@ -3,7 +3,7 @@ import { AGENTS } from "@/lib/agents";
 import {
   Upload, ScanLine, Brain, Cpu, Gauge, FileText, Download,
   Cloud, Database, HardDrive, BarChart3, Sparkles, Eye, Activity, Workflow,
-  ArrowRight,
+  ArrowRight, Monitor,
 } from "lucide-react";
 
 const Arrow = () => (
