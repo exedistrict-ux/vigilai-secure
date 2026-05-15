@@ -1,9 +1,10 @@
 # VigilAI — Detect. Verify. Protect.
 
 ![Hackathon](https://img.shields.io/badge/Google%20Cloud-Rapid%20Agent%20Hackathon-blue)
-![Partners](https://img.shields.io/badge/Partners-5%20Integrated-blue)
+![Partners](https://img.shields.io/badge/Partners-6%20Integrated-brightgreen)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
 ![GitLab CI](https://img.shields.io/badge/CI%2FCD-GitLab-orange)
+![Dynatrace](https://img.shields.io/badge/Monitoring-Dynatrace-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Live-brightgreen)
 
@@ -80,6 +81,7 @@ VigilAI specifically targets India's fastest-growing cybercrime — **Digital Ar
 ### Partner Integrations
 
 - **Arize AI** — End-to-end AI observability, drift monitoring, and per-agent evaluation of Gemini outputs
+- **Dynatrace** — Monitors VigilAI's agent performance, detects anomalies in the threat analysis pipeline, and ensures 99.9% uptime for real-time cyber defense
 - **Elastic** — Security analytics, full-text threat search, and SIEM-style dashboards over historical reports
 - **Fivetran** — Managed data pipelines feeding threat-intel feeds and partner data into BigQuery
 
@@ -167,4 +169,4 @@ Dark cybersecurity aesthetic with blue (`#3B82F6`) and cyan (`#06B6D4`) accents 
 
 **VigilAI** · Detect. Verify. Protect.
 Built for **Google Cloud Rapid Agent Hackathon 2026** · Powered by Gemini + Vertex AI
-Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB**
+Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB · Dynatrace**

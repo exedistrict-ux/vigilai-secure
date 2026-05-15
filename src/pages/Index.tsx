@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { AGENTS } from "@/lib/agents";
-import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity, Eye, BarChart3, Workflow, GitBranch, Database, CheckCircle2 } from "lucide-react";
+import { ShieldAlert, Newspaper, Phone, Video, Users, Globe, ArrowRight, Sparkles, Zap, Lock, Activity, Eye, BarChart3, Workflow, GitBranch, Database, CheckCircle2, Gauge } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { DigitalArrestHighlight } from "@/components/DigitalArrestHighlight";
@@ -26,6 +26,7 @@ const partners = [
   { name: "Fivetran", desc: "Automated Data Pipelines", icon: Workflow, color: "#0073ff" },
   { name: "GitLab", desc: "CI/CD Pipeline & Version Control", icon: GitBranch, color: "#fc6d26" },
   { name: "MongoDB", desc: "Threat Intelligence Database", icon: Database, color: "#00ed64" },
+  { name: "Dynatrace", desc: "AI-Powered Performance & Observability", icon: Gauge, color: "#1496FF" },
 ];
 
 const Counter = ({ end, label, suffix = "" }: { end: number; label: string; suffix?: string }) => {
@@ -166,7 +167,7 @@ const Landing = () => {
       <section className="container py-16 border-t border-border">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Integrations</div>
-          <h2 className="text-3xl md:text-4xl font-bold">5 Partners. Fully Integrated.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">6 Partners. Fully Integrated.</h2>
           <p className="text-muted-foreground mt-3">Industry leaders powering VigilAI's intelligence stack.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -215,7 +216,7 @@ const Landing = () => {
           <div className="text-xs">
             Built for <span className="text-foreground font-medium">Google Cloud Rapid Agent Hackathon 2026</span> ·
             Powered by <span className="text-foreground font-medium">Gemini + Vertex AI</span> ·
-            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran · GitLab · MongoDB</span>
+            Partners: <span className="text-foreground font-medium">Arize AI · Elastic · Fivetran · GitLab · MongoDB · Dynatrace</span>
           </div>
           <div>© {new Date().getFullYear()} VigilAI · Detect. Verify. Protect.</div>
         </div>
