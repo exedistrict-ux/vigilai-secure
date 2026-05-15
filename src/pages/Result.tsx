@@ -161,7 +161,8 @@ ${report.recommendations.map((r, i) => `${i+1}. ${r}`).join("\n")}
               <p className="text-sm">{report.inputPreview}</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button variant="hero" onClick={downloadReport}><Download className="h-4 w-4" /> Download Report</Button>
+              <Button variant="hero" onClick={downloadPdf}><FileText className="h-4 w-4" /> Download PDF</Button>
+              <Button variant="outline" onClick={downloadReport}><Download className="h-4 w-4" /> Download TXT</Button>
               <Button asChild variant="outline"><Link to="/history">View History</Link></Button>
             </div>
           </div>
