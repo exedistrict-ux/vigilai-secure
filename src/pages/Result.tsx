@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { AGENTS } from "@/lib/agents";
 import { getReport, type Report } from "@/lib/storage";
 import { Link, useSearchParams } from "react-router-dom";
-import { AlertTriangle, ArrowLeft, Check, Download, Lightbulb, ShieldAlert } from "lucide-react";
+import { AlertTriangle, ArrowLeft, Check, Download, FileText, Lightbulb, ShieldAlert } from "lucide-react";
+import jsPDF from "jspdf";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
