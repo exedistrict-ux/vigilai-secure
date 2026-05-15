@@ -1,9 +1,10 @@
 # VigilAI — Detect. Verify. Protect.
 
 ![Hackathon](https://img.shields.io/badge/Google%20Cloud-Rapid%20Agent%20Hackathon-blue)
-![Partners](https://img.shields.io/badge/Partners-5%20Integrated-blue)
+![Partners](https://img.shields.io/badge/Partners-6%20Integrated-brightgreen)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
 ![GitLab CI](https://img.shields.io/badge/CI%2FCD-GitLab-orange)
+![Dynatrace](https://img.shields.io/badge/Monitoring-Dynatrace-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Live-brightgreen)
 
