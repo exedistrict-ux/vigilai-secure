@@ -104,8 +104,9 @@ const CloudArch = () => (
       <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">
         Partner Layer
       </div>
-      <div className="grid sm:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Node icon={Eye} title="Arize AI" sub="AI observability" tone="accent" />
+        <Node icon={Monitor} title="Dynatrace" sub="Real-time performance monitoring for all 9 agents" tone="accent" />
         <Node icon={Activity} title="Elastic" sub="Security analytics" tone="accent" />
         <Node icon={Workflow} title="Fivetran" sub="Data pipeline" tone="accent" />
       </div>
