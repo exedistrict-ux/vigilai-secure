@@ -81,6 +81,7 @@ VigilAI specifically targets India's fastest-growing cybercrime — **Digital Ar
 ### Partner Integrations
 
 - **Arize AI** — End-to-end AI observability, drift monitoring, and per-agent evaluation of Gemini outputs
+- **Dynatrace** — Monitors VigilAI's agent performance, detects anomalies in the threat analysis pipeline, and ensures 99.9% uptime for real-time cyber defense
 - **Elastic** — Security analytics, full-text threat search, and SIEM-style dashboards over historical reports
 - **Fivetran** — Managed data pipelines feeding threat-intel feeds and partner data into BigQuery
 
@@ -168,4 +169,4 @@ Dark cybersecurity aesthetic with blue (`#3B82F6`) and cyan (`#06B6D4`) accents 
 
 **VigilAI** · Detect. Verify. Protect.
 Built for **Google Cloud Rapid Agent Hackathon 2026** · Powered by Gemini + Vertex AI
-Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB**
+Partners: **Arize AI · Elastic · Fivetran · GitLab · MongoDB · Dynatrace**
